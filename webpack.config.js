@@ -1,13 +1,18 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const webpack = require('webpack');
+
+const DIST = path.join(__dirname, './dist');
 
 module.exports = {
   mode: "development",
   entry: {
-    main: path.resolve(__dirname, "./src/main.js"),
+    main: path.join(__dirname, "./src/main.js"),
   },
-  output: {},
+  output: {
+    path: DIST,
+  },
   module: {
     rules: [
       {
@@ -35,8 +40,14 @@ module.exports = {
       template: "./src/main.html",
     }),
     new CleanWebpackPlugin(),
+    new webpack.HotModuleReplacementPlugin()
   ],
   optimization: {
     minimize: false,
-  }
+  },
+  devServer: {
+    contentBase: DIST,
+    port: 5000,
+    open: true,
+  },
 };
