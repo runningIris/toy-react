@@ -4,13 +4,19 @@ class MyComponent extends Component {
   render() {
     return (
       <div class="hello">
-        <h1>hahaha</h1>
-        <h2>hehehe</h2>
+        <span>hello</span>
+        &nbsp;
+        <span>world</span>
+        {this.children}
       </div>
     );
   }
 }
 
-const a = <MyComponent name="a" id="aa"></MyComponent>;
+const a = (
+  <MyComponent name="a" id="aa">
+    <span>!</span>
+  </MyComponent>
+);
 
 ToyReact.render(a, document.body);
