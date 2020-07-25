@@ -50,4 +50,5 @@ module.exports = {
     port: 5000,
     open: true,
   },
+  stats: 'errors-only'
 };
